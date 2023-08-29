@@ -110,6 +110,7 @@
     "tailwindcss": "^3.3.2",
     "turbo": "^1.10.6",
     "styled-components": "6.0.0",
+    "@splinetool/runtime": "^0.9.232",
     "typescript": "^5.1.3"
   }
 }
