@@ -32,7 +32,7 @@ export default async function AdminCommentsPage() {
     // FIXME:
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const [count] = rows
+    const [commentsCount] = rows
 
     const latestComments = await db
         .select()
