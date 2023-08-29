@@ -11,6 +11,6 @@ export default {
     password: process.env.DATABASE_PASSWORD || '',
     host: process.env.DATABASE_HOST || '',
     database: process.env.DATABASE_SCHEMA || '',
-    port: process.env.DATABASE_PORT || 3306,
+    port: process.env.DATABASE_PORT ? Number(process.env.DATABASE_PORT) : 3306,
   },
 } satisfies Config
