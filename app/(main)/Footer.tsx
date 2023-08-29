@@ -101,7 +101,7 @@ async function LastVisitorInfo() {
 }
 
 export async function Footer() {
-    const res = await db.execute(
+    const [rows = []] = await db.execute(
         sql`SELECT 
     (SELECT COUNT(*) FROM subscribers WHERE subscribed_at IS NOT NULL) as subscribers`
     )
@@ -110,7 +110,7 @@ export async function Footer() {
     // @ts-ignore
     // FIXME: https://github.com/drizzle-team/drizzle-orm/issues/661
     // it should be { rows: [count], }
-    const count = res[0][0]
+    const { count } = rows
 
     return (
         <footer className="mt-32">

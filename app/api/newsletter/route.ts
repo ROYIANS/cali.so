@@ -56,6 +56,7 @@ export async function POST(req: NextRequest) {
                 }),
             })
 
+            // FIXME
             await db.insert(subscribers).values({
                 email: parsed.email,
                 token,

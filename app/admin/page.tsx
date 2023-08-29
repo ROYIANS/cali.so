@@ -5,14 +5,17 @@ import React from 'react'
 import {db} from '~/db'
 
 export default async function AdminPage() {
-    const {
-        rows: [count],
-    } = await db.execute<{ today_count: number }>(
+    const [rows = []] = await db.execute<{ today_count: number }>(
         sql`SELECT 
   (SELECT COUNT(*) FROM comments) as comments,
   (SELECT COUNT(*) FROM subscribers WHERE subscribed_at IS NOT NULL) as subscribers,
   (SELECT COUNT(*) FROM guestbook) as guestbook`
     )
+
+    // FIXME:
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const [count] = rows
 
     return (
         <>

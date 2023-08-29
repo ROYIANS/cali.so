@@ -7,12 +7,14 @@ import {db} from '~/db'
 import {subscribers} from '~/db/schema'
 
 export default async function AdminSubscribersPage() {
-    const {
-        rows: [count],
-    } = await db.execute<{ today_count: number }>(
+    const [rows = []] = await db.execute<{ today_count: number }>(
         sql`SELECT 
   (SELECT COUNT(*) FROM subscribers WHERE subscribed_at IS NOT NULL) as total`
     )
+    // FIXME:
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const [count] = rows
     const subs = await db
         .select()
         .from(subscribers)

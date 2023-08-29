@@ -51,6 +51,7 @@ export default function CreateNewsletterPage() {
             }),
         })
 
+        // FIXME
         await db.insert(newsletters).values({
             ...data,
             sentAt: parseDateTime({

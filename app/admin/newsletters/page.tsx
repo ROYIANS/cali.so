@@ -7,12 +7,14 @@ import {db} from '~/db'
 import {newsletters} from '~/db/schema'
 
 export default async function AdminNewslettersPage() {
-    const {
-        rows: [count],
-    } = await db.execute<{ today_count: number }>(
+  const [rows = []] = await db.execute<{ today_count: number }>(
         sql`SELECT 
   (SELECT COUNT(*) FROM newsletters) as total`
     )
+  // FIXME:
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const [count] = rows
     const nl = await db
         .select()
         .from(newsletters)
