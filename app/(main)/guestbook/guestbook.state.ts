@@ -1,18 +1,18 @@
-import { proxy } from 'valtio'
+import {proxy} from 'valtio'
 
-import { type GuestbookDto } from '~/db/dto/guestbook.dto'
+import {type GuestbookDto} from '~/db/dto/guestbook.dto'
 
 export const guestbookState = proxy<{
-  messages: GuestbookDto[]
+    messages: GuestbookDto[]
 }>({
-  messages: [],
+    messages: [],
 })
 
 export function setMessages(messages: GuestbookDto[]) {
-  guestbookState.messages = messages
+    guestbookState.messages = messages
 }
 
 export function signBook(message: GuestbookDto) {
-  // insert message at index 0
-  guestbookState.messages.splice(0, 0, message)
+    // insert message at index 0
+    guestbookState.messages.splice(0, 0, message)
 }

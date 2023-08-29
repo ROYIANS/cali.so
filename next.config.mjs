@@ -1,4 +1,4 @@
-import { get } from '@vercel/edge-config'
+import {get} from '@vercel/edge-config'
 
 /**
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
@@ -8,38 +8,38 @@ import { get } from '@vercel/edge-config'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverActions: true,
-  },
+    experimental: {
+        serverActions: true,
+    },
 
-  images: {
-    domains: ['cdn.sanity.io'],
-  },
+    images: {
+        domains: ['cdn.sanity.io'],
+    },
 
-  async redirects() {
-    try {
-      return (await get('redirects')) ?? []
-    } catch {
-      return []
-    }
-  },
+    async redirects() {
+        try {
+            return (await get('redirects')) ?? []
+        } catch {
+            return []
+        }
+    },
 
-  rewrites() {
-    return [
-      {
-        source: '/feed',
-        destination: '/feed.xml',
-      },
-      {
-        source: '/rss',
-        destination: '/feed.xml',
-      },
-      {
-        source: '/rss.xml',
-        destination: '/feed.xml',
-      },
-    ]
-  },
+    rewrites() {
+        return [
+            {
+                source: '/feed',
+                destination: '/feed.xml',
+            },
+            {
+                source: '/rss',
+                destination: '/feed.xml',
+            },
+            {
+                source: '/rss.xml',
+                destination: '/feed.xml',
+            },
+        ]
+    },
 }
 
 export default nextConfig

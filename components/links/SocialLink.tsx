@@ -5,13 +5,14 @@ import Link, { type LinkProps } from 'next/link'
 import React from 'react'
 
 import {
-  AtomIcon,
   BilibiliIcon,
+  FeedIcon,
   GitHubIcon,
   type IconProps,
   MailIcon,
   TelegramIcon,
   TwitterIcon,
+  WeiboIcon,
   YouTubeIcon,
 } from '~/assets'
 import { Tooltip } from '~/components/ui/Tooltip'
@@ -25,6 +26,7 @@ type Platform =
   | 'bilibili'
   | 'mail'
   | 'rss'
+  | 'weibo'
 type PlatformInfo = {
   icon: IconType
   platform: Platform
@@ -53,7 +55,12 @@ const iconMapper: { [key: string]: PlatformInfo } = {
     label: '哔哩哔哩',
   },
   '(?:mailto:)': { icon: MailIcon, platform: 'mail', label: '邮箱地址' },
-  '(?:feed.xml)': { icon: AtomIcon, platform: 'rss', label: 'RSS 订阅' },
+  '(?:feed.xml)': { icon: FeedIcon, platform: 'rss', label: 'RSS 订阅' },
+  '(?:weibo.com)': {
+    icon: WeiboIcon,
+    platform: 'weibo',
+    label: '微博',
+  },
 }
 
 function getIconForUrl(url: string): PlatformInfo | undefined {

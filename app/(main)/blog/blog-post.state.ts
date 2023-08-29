@@ -1,36 +1,36 @@
-import { proxy } from 'valtio'
+import {proxy} from 'valtio'
 
-import { type PostIDLessCommentDto } from '~/db/dto/comment.dto'
+import {type PostIDLessCommentDto} from '~/db/dto/comment.dto'
 
 type PostID = string
 export const blogPostState = proxy<{
-  postId: PostID
-  currentBlockId: string | null
-  comments: PostIDLessCommentDto[]
-  replyingTo: PostIDLessCommentDto | null
+    postId: PostID
+    currentBlockId: string | null
+    comments: PostIDLessCommentDto[]
+    replyingTo: PostIDLessCommentDto | null
 }>({
-  postId: '',
-  currentBlockId: null,
-  comments: [],
-  replyingTo: null,
+    postId: '',
+    currentBlockId: null,
+    comments: [],
+    replyingTo: null,
 })
 
 export function addComment(comment: PostIDLessCommentDto) {
-  blogPostState.comments.push(comment)
+    blogPostState.comments.push(comment)
 }
 
 export function replyTo(comment: PostIDLessCommentDto) {
-  blogPostState.replyingTo = comment
+    blogPostState.replyingTo = comment
 }
 
 export function clearReply() {
-  blogPostState.replyingTo = null
+    blogPostState.replyingTo = null
 }
 
 export function focusBlock(blockId: string | null) {
-  blogPostState.currentBlockId = blockId
+    blogPostState.currentBlockId = blockId
 }
 
 export function clearBlockFocus() {
-  blogPostState.currentBlockId = null
+    blogPostState.currentBlockId = null
 }
