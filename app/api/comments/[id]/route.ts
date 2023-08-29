@@ -158,12 +158,11 @@ export async function POST(req: NextRequest, {params}: Params) {
         }
 
         // FIXME
-        const [insertId] = await db.insert(comments).values(commentData)
+        const [{ insertId }] = await db.insert(comments).values(commentData)
 
         return NextResponse.json({
             ...commentData,
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/restrict-template-expressions
-            id: CommentHashids.encode(`${insertId}`),
+            id: CommentHashids.encode(insertId),
             createdAt: new Date(),
             parentId: hashedParentId,
         } satisfies CommentDto)

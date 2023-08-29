@@ -79,13 +79,12 @@ export async function POST(req: NextRequest) {
         }
 
         // FIXME
-        const [insertId] = await db.insert(guestbook).values(guestbookData)
+        const [{ insertId }] = await db.insert(guestbook).values(guestbookData)
 
         return NextResponse.json(
             {
                 ...guestbookData,
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/restrict-template-expressions
-                id: GuestbookHashids.encode(`${insertId}`),
+                id: GuestbookHashids.encode(insertId),
                 createdAt: new Date(),
             } satisfies GuestbookDto,
             {
