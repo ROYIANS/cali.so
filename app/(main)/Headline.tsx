@@ -32,7 +32,7 @@ function Designer() {
                 <span
                     className="absolute -right-0.5 -top-0.5 h-1.5 w-1.5 border border-cyan-700 bg-zinc-50 dark:border-cyan-400"/>
             </span>
-      设计师
+      工程师
         </span>
     )
 }
@@ -50,7 +50,7 @@ function Founder() {
     return (
         <span className="group">
             <UserSecurityIcon className="mr-1 inline-flex group-hover:fill-zinc-600/20 dark:group-hover:fill-zinc-200/20"/>
-            <span>创始人</span>
+            <span>学习者</span>
         </span>
     )
 }
